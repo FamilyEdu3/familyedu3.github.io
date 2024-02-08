@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Program Interface</title>
+    <style>
+        /* 简单的布局样式 */
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .image, .video {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <!-- 图像控件显示teacher.jpg -->
+            <img src="/static/image/teacher.jpg" alt="Teacher Image" width="320" height="240">
+        </div>
+        <div class="video">
+            <!-- 视频控件 -->
+            <video src="/static/video/2024_01_09_12.21.38.mp4" id="generatedVideo" type="video/mp4" width="320" height="240" controls>
+                <!-- 初始时不加载任何视频 -->
+            </video>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <!-- 按钮用于触发视频生成 -->
+        <button id="generateButton">Generate Video</button>
+    </div>
+
+    <script>
+        document.getElementById('generateButton').addEventListener('click', function() {
+            // 发起POST请求到/generate路由
+            fetch('/generate', {
+                method: 'POST',
+                // 可以添加需要发送的数据，例如headers和body
+            }).then(response => response.json())  // 假设服务器返回JSON格式的响应
+              .then(data => {
+                  // 更新视频控件的src属性以显示新视频
+                  document.getElementById('generatedVideo').src = data.videoPath;
+              }).catch(error => {
+                  console.error('Error:', error);
+              });
+        });
+    </script>
+</body>
+</html>

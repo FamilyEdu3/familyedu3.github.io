@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        /* 简单的样式以美化视频播放器 */
+        video {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 20px;">
+        <h2>Video Playback</h2>
+        <!-- 视频播放器 -->
+        <video controls>
+            <source src="/static/video/new.mp4" type="video/mp4" controls="controls">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</body>
+</html>
+
